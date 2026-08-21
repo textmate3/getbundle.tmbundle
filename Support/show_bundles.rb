@@ -1,9 +1,9 @@
-#!/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -wKU
+#!/usr/bin/env ruby -w
 # encoding: utf-8
 
 SUPPORT = ENV['TM_SUPPORT_PATH']
 require SUPPORT + '/lib/escape.rb'
-require SUPPORT + '/lib/osx/plist'
+require SUPPORT + '/private/plist'
 require 'rexml/document'
 require 'erb'
 
@@ -49,8 +49,8 @@ x = Thread.new do
 
     bundles.each do |bundle|
       puts "Load #{bundle['path']}…"
-      plist = open("|svn cat http://svn.textmate.org/trunk/Bundles/#{url_encode bundle['path']}/info.plist") do |svn|
-				OSX::PropertyList.load(svn) 
+      plist = IO.popen("svn cat http://svn.textmate.org/trunk/Bundles/#{url_encode bundle['path']}/info.plist") do |svn|
+				Plist.load(svn)
 			end
       # puts "Got #{plist}"
       bundle['uuid'] = plist['uuid'] unless plist['uuid'].nil?
