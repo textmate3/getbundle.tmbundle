@@ -15,9 +15,9 @@ if [[ $? == 0 ]]; then
    2&gt; &gt;(CocoaDialog progressbar --indeterminate --title 'Updating all your Bundles' --text 'This could take a while...')
 
   osascript -e 'tell app "TextMate" to reload bundles'
-  "${TM_RUBY:-ruby}" -wKU "$TM_BUNDLE_SUPPORT/notify.rb" updated
+  "${TM_RUBY:-ruby}" -w "$TM_BUNDLE_SUPPORT/notify.rb" updated
 else
-  "${TM_RUBY:-ruby}" -wKU "$TM_BUNDLE_SUPPORT/notify.rb" update_failed
+  "${TM_RUBY:-ruby}" -w "$TM_BUNDLE_SUPPORT/notify.rb" update_failed
 fi
 </string>
 	<key>name</key>

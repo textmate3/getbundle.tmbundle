@@ -43,7 +43,7 @@ eval '"$SVN"' co "$SVN_OPTS" '"${BASE_URL}/Bundles/${bu}.tmbundle"' \
 
 if [[ $? == 0 ]]; then
   osascript -e 'tell app "TextMate" to reload bundles'
-  "${TM_RUBY:-ruby}" -wKU "$TM_BUNDLE_SUPPORT/notify.rb" installed "${bu}"
+  "${TM_RUBY:-ruby}" -w "$TM_BUNDLE_SUPPORT/notify.rb" installed "${bu}"
 fi
 </string>
 	<key>input</key>
